@@ -1,6 +1,7 @@
 use yew::prelude::*;
 
 use crate::components::Card;
+use crate::components::ExpandDown;
 
 pub struct Home;
 
@@ -16,8 +17,9 @@ impl Component for Home {
         html! {
             <div class="relative h-screen">
                 <Card/>
-                <div class="absolute bottom-0 inset-x-0 flex justify-center pb-5">
-                    <i class="fa-regular fa-chevron-down"></i>
+                <ExpandDown/>
+                <div class="absolute bottom-0 right-0">
+                    <a href="https://yew.rs" class="hover:text-red-500">{"made with yew❤️"}</a>
                 </div>
             </div>
         }
