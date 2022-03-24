@@ -8,8 +8,10 @@ public_url = "/"                           # for {username}.github.io
 
 [watch]
 watch = [
-    # also watch style folder
-    "./css/"
+    "./index.html",
+    "src/",
+    "css/",
+    "static/",
 ]
 
 [clean]

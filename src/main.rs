@@ -1,44 +1,10 @@
 use yew::prelude::*;
 use yew_router::prelude::*;
 
-// ===================================================================================
-// for {username}.github.io/{repo_name}
+mod components;
+mod pages;
 
-// #[derive(Clone, Routable, PartialEq)]
-// enum RootRoute {
-//     #[at("/yew-template-for-github-io/")]
-//     Home,
-//     #[at("/yew-template-for-github-io/:s")]
-//     Route,
-// }
-
-// #[derive(Clone, Routable, PartialEq)]
-// enum Route {
-//     #[at("/yew-template-for-github-io/about")]
-//     About,
-//     #[not_found]
-//     #[at("/yew-template-for-github-io/404")]
-//     NotFound,
-// }
-
-// fn root_route(routes: &RootRoute) -> Html {
-//     match routes {
-//         RootRoute::Home => html! { <p class="text-4xl">{ "Yew Template" }</p> },
-//         RootRoute::Route => html! {
-//             <Switch<Route> render={Switch::render(switch)} />
-//         },
-//     }
-// }
-
-// fn switch(routes: &Route) -> Html {
-//     match routes {
-//         Route::About => html! { <p>{ "About" }</p> },
-//         Route::NotFound => html! { <p>{ "Not Found" }</p> },
-//     }
-// }
-
-// ===================================================================================
-// for {username}.github.io
+use pages::Home;
 
 #[derive(Clone, Routable, PartialEq)]
 enum Route {
@@ -53,24 +19,21 @@ enum Route {
 
 fn root_route(routes: &Route) -> Html {
     match routes {
-        Route::Home => html! { <p class="text-4xl">{ "Yew Template" }</p> },
-        Route::About => html! { <p>{ "About" }</p> },
+        Route::Home => html! { <Home /> },
+        Route::About => html! {
+            <>
+                <p>{ "About" }</p>
+            </>
+        },
         Route::NotFound => html! { <p>{ "Not Found" }</p> },
     }
 }
-
-// ===================================================================================
 
 /// main root
 #[function_component(App)]
 fn app() -> Html {
     html! {
-        // ********************************************************
-        // **    basename is not supported on yew 0.19.0 yet.    **
-        // <BrowserRouter basename="/yew-template-for-github-io/">
-        //     <Switch<Route> render={Switch::render(switch)} />
-        // </BrowserRouter>
-        // ********************************************************
+        // After update 0.20.0 or after 0.19.0, check basename option on BrowserRouter
         <BrowserRouter>
             <Switch<Route> render={Switch::render(root_route)} />
         </BrowserRouter>
